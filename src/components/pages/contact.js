@@ -1,23 +1,62 @@
 import React, { Component } from "react";
-import phone from "../../res/img/contact/phone-call.png";
-import address from "../../res/img/contact/home.png";
-import mail from "../../res/img/contact/email.png";
+import { contactData } from "../../res/data/contact";
+// import emailjs from "emailjs-com";
 class Contact extends Component {
   state = {
-    contact: [
-      { id: 1, image: phone, name: "Phone", detail: "03084966078" },
-      { id: 2, image: mail, name: "Email", detail: "inaam040@gmail.com" },
-      { id: 2, image: address, name: "Address", detail: "Lahore, Pakistan" },
-    ],
+    name: "",
+    message: "",
+    errors: {},
   };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, message } = this.state;
+
+    if (name === "") {
+      this.setState({ errors: { name: "Name is required" } });
+      return;
+    }
+    if (message === "") {
+      this.setState({ errors: { message: "Name is required" } });
+      return;
+    }
+
+    // emailjs
+    //   .send(
+    //     "4966",
+    //     "template_62wlllh",
+    //     e.target.value,
+    //     "user_IPHkgTMXkV6dDcEgKjeAE"
+    //   )
+    //   .then(
+    //     function (response) {
+    //       console.log("SUCCESS!", response.status, response.text);
+    //     },
+    //     function (err) {
+    //       console.log("FAILED...", err);
+    //     }
+    //   );
+    const newMessage = {
+      name,
+      message,
+    };
+    console.log(newMessage);
+    this.setState({
+      name: "",
+      message: "",
+    });
+  };
+
+  handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
   render() {
+    const { name, message, errors } = this.state;
     return (
       <div className="contact">
         <h1 className="section-heading-white">Contact Me</h1>
         <div className="border" />
         <div className="container section-grid">
           <div className="contact-me">
-            {this.state.contact.map((item) => (
+            {contactData.contact.map((item) => (
               <div className="contact-box" key={item.id}>
                 <div className="image">
                   <img src={item.image} alt="Contact-Me" />
@@ -31,15 +70,32 @@ class Contact extends Component {
           </div>
           <div />
           <div className="message">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="input-field">
-                <input placeholder="Enter Your Name" />
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={this.handleChange}
+                  placeholder="Enter Your Name"
+                  error={errors.name}
+                />
               </div>
               <div className="input-field">
-                <textarea placeholder="Your Message" rows="5" />
+                <textarea
+                  type="text"
+                  name="message"
+                  value={message}
+                  onChange={this.handleChange}
+                  placeholder="Your Message"
+                  rows="5"
+                  error={errors.message}
+                />
               </div>
             </form>
-            <button className="btn btn-outline">Send</button>
+            <button className="btn btn-outline" onClick={this.handleSubmit}>
+              Send
+            </button>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { projectData } from "../../res/data/projectData";
+import { projectData } from "../../res/data/projects";
 import Slider from "react-slick";
 class Projects extends Component {
   render() {

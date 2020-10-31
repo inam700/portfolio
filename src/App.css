@@ -47,6 +47,9 @@ img {
 .navbar ul {
   display: flex;
 }
+.navbar h1{
+  cursor: pointer;
+}
 .navbar a {
   color: #ffffff;
   padding: 10px;
@@ -88,6 +91,10 @@ img {
   top: 60px;
   height: 350px;
   z-index: 100;
+  transition: transform 0.2s ease-in;
+}
+.showcase img:hover{
+  transform: translateY(15px);
 }
 .showcase .grid {
   grid-template-columns: 75% 25%;
@@ -193,12 +200,18 @@ img {
   margin: 10px 20px;
 }
 .projects .tags i {
-  background: #c0c0c0;
+  background: transparent;
   color: #000000;
   text-align: center;
   width: auto;
-  padding: 3px 10px;
-  border-radius: 40px;
+  margin: auto;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
+}
+.projects .tags i:hover{
+  background: var(--primary-color);
+  color: #ffffff;
 }
 .projects .links {
   display: flex;
@@ -218,6 +231,9 @@ img {
   color: #ffffff;
   margin-top: 70px;
   padding: 20px 0 100px 0;
+}
+.contact .border{
+  width: 180px;
 }
 .contact-me .contact-box {
   display: flex;
@@ -264,14 +280,14 @@ img {
 }
 
 .message .btn{
-  width: 30%;
+  width: 40%;
   font-size: 18px;
 }
 
 /* Tools and Technologies */
 
 .tools .border {
-  width: 370px;
+  width: 220px;
 }
 .tools .flex {
   flex-wrap: wrap;
