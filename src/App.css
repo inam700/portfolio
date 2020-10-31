@@ -179,6 +179,7 @@ img {
 }
 .projects img {
   opacity: 0.8;
+  height: 130px;
 }
 .projects img:hover {
   opacity: 1;
@@ -285,6 +286,9 @@ img {
 }
 
 /* Tools and Technologies */
+.tools {
+  margin-top: 50px;
+}
 
 .tools .border {
   width: 220px;

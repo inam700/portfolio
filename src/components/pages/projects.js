@@ -25,7 +25,6 @@ class Projects extends Component {
                     <img src={item.image1} alt="projects" />
                     <img src={item.image2} alt="projects" />
                     <img src={item.image3} alt="projects" />
-                    <img src={item.image4} alt="projects" />
                   </Slider>
                   <h3>{item.name}</h3>
                   <p>{item.description}</p>
@@ -34,11 +33,12 @@ class Projects extends Component {
                     <i>{item.tag2}</i>
                     <i>{item.tag3}</i>
                     <i>{item.tag4}</i>
+                    <i>{item.tag5}</i>
                   </div>
                   <div className="links">
-                    <Link to="/" className="btn-flat">
+                    <a href={item.linkTo} className="btn-flat">
                       Visit Github To Get Code
-                    </Link>
+                    </a>
                   </div>
                 </div>
               );

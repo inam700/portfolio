@@ -1,7 +1,6 @@
 import React from "react";
 import { Element } from "react-scroll";
 import Contact from "./contact";
-import ProjectGallery from "./projectGallery";
 import Projects from "./projects";
 import Services from "./services";
 import Showcase from "./showcase";
@@ -14,7 +13,6 @@ function HomePage() {
       <Element name="projects">
         <Projects />
       </Element>
-      <ProjectGallery />
       <Tools />
       <Element name="contact">
         <Contact />
