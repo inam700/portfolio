@@ -5,6 +5,7 @@ class Contact extends Component {
   state = {
     name: "",
     message: "",
+    formSubmit: false,
     errors: {},
   };
   handleSubmit = (e) => {
@@ -13,6 +14,7 @@ class Contact extends Component {
 
     if (name === "") {
       this.setState({ errors: { name: "Name is required" } });
+      console.log("error");
       return;
     }
     if (message === "") {
@@ -39,17 +41,22 @@ class Contact extends Component {
       name,
       message,
     };
+
     console.log(newMessage);
     this.setState({
       name: "",
       message: "",
+      formSubmit: true,
     });
+    setTimeout(() => {
+      this.setState({ formSubmit: false });
+    }, 3000);
   };
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, message, errors } = this.state;
+    const { name, message } = this.state;
     return (
       <div className="contact">
         <h1 className="section-heading-white">Contact Me</h1>
@@ -78,7 +85,6 @@ class Contact extends Component {
                   value={name}
                   onChange={this.handleChange}
                   placeholder="Enter Your Name"
-                  error={errors.name}
                 />
               </div>
               <div className="input-field">
@@ -89,13 +95,15 @@ class Contact extends Component {
                   onChange={this.handleChange}
                   placeholder="Your Message"
                   rows="5"
-                  error={errors.message}
                 />
               </div>
             </form>
             <button className="btn btn-outline" onClick={this.handleSubmit}>
               Send
             </button>
+            {this.state.formSubmit === true ? (
+              <h2>Message Sent Successfully</h2>
+            ) : null}
           </div>
         </div>
       </div>

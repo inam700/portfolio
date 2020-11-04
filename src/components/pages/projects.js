@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { projectData } from "../../res/data/projects";
 import Slider from "react-slick";
 class Projects extends Component {
@@ -25,16 +24,23 @@ class Projects extends Component {
                     <img src={item.image1} alt="projects" />
                     <img src={item.image2} alt="projects" />
                     <img src={item.image3} alt="projects" />
+                    {/* {typeof item.images == "object" ? (
+                      <div>
+                        {item.images.map((el) => (
+                          <img src={el.image} alt="Projects" />
+                        ))}
+                      </div>
+                    ) : null} */}
                   </Slider>
                   <h3>{item.name}</h3>
                   <p>{item.description}</p>
-                  <div className="tags">
-                    <i>{item.tag1}</i>
-                    <i>{item.tag2}</i>
-                    <i>{item.tag3}</i>
-                    <i>{item.tag4}</i>
-                    <i>{item.tag5}</i>
-                  </div>
+                  {typeof item.tags == "object" ? (
+                    <div className="tags">
+                      {item.tags.map((tag) => (
+                        <i key={tag.id}>{tag.name}</i>
+                      ))}
+                    </div>
+                  ) : null}
                   <div className="links">
                     <a href={item.linkTo} className="btn-flat">
                       Visit Github To Get Code

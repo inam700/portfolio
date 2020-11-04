@@ -284,6 +284,10 @@ img {
   width: 40%;
   font-size: 18px;
 }
+.message h2{
+  color: var(--secondary-color);
+  font-size: 16px;
+}
 
 /* Tools and Technologies */
 .tools {
